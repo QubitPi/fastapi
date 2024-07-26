@@ -53,13 +53,6 @@ jobs:
       - name: Install docs extras
         if: steps.cache.outputs.cache-hit != 'true'
         run: pip install -r requirements-docs.txt
-      # Install MkDocs Material Insiders here just to put it in the cache for the rest of the steps
-      - name: Install Material for MkDocs Insiders
-        if: ( github.event_name != 'pull_request' || github.secret_source == 'Actions' ) && steps.cache.outputs.cache-hit != 'true'
-        run: |
-          pip install git+https://${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}@github.com/squidfunk/mkdocs-material-insiders.git
-          pip install git+https://${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}@github.com/pawamoy-insiders/griffe-typing-deprecated.git
-          pip install git+https://${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}@github.com/pawamoy-insiders/mkdocstrings-python.git
       - name: Verify Docs
         run: python ./scripts/docs.py verify-docs
       - name: Export Language Codes
@@ -94,12 +87,6 @@ jobs:
       - name: Install docs extras
         if: steps.cache.outputs.cache-hit != 'true'
         run: pip install -r requirements-docs.txt
-      - name: Install Material for MkDocs Insiders
-        if: ( github.event_name != 'pull_request' || github.secret_source == 'Actions' ) && steps.cache.outputs.cache-hit != 'true'
-        run: |
-          pip install git+https://${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}@github.com/squidfunk/mkdocs-material-insiders.git
-          pip install git+https://${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}@github.com/pawamoy-insiders/griffe-typing-deprecated.git
-          pip install git+https://${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}@github.com/pawamoy-insiders/mkdocstrings-python.git
       - name: Update Languages
         run: python ./scripts/docs.py update-languages
       - uses: actions/cache@v4
@@ -112,6 +99,18 @@ jobs:
         with:
           name: docs-site-${{ matrix.lang }}
           path: ./site/**
+      - name: Load CNAME file
+        if: ${{ matrix.lang == 'en' }}
+        run: echo fastapi.qubitpi.org > site/CNAME
+      - name: Deploy to GitHub Pages
+        if: ${{ matrix.lang == 'en' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site
+          enable_jekyll: false
+          user_name: QubitPi
+          user_email: jack20220723@gmail.com
 
   # https://github.com/marketplace/actions/alls-green#why
   docs-all-green:  # This job does nothing and is only used for the branch protection
