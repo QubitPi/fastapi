@@ -62,12 +62,6 @@ jobs:
             pyproject.toml
       - name: Install docs extras
         run: uv pip install -r requirements-docs.txt
-      # Install MkDocs Material Insiders here just to put it in the cache for the rest of the steps
-      - name: Install Material for MkDocs Insiders
-        if: ( github.event_name != 'pull_request' || github.secret_source == 'Actions' )
-        run: uv pip install -r requirements-docs-insiders.txt
-        env:
-          TOKEN: ${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}
       - name: Verify Docs
         run: python ./scripts/docs.py verify-docs
       - name: Export Language Codes
@@ -104,11 +98,6 @@ jobs:
             pyproject.toml
       - name: Install docs extras
         run: uv pip install -r requirements-docs.txt
-      - name: Install Material for MkDocs Insiders
-        if: ( github.event_name != 'pull_request' || github.secret_source == 'Actions' )
-        run: uv pip install -r requirements-docs-insiders.txt
-        env:
-          TOKEN: ${{ secrets.FASTAPI_MKDOCS_MATERIAL_INSIDERS }}
       - name: Update Languages
         run: python ./scripts/docs.py update-languages
       - uses: actions/cache@v4
@@ -122,6 +111,16 @@ jobs:
           name: docs-site-${{ matrix.lang }}
           path: ./site/**
           include-hidden-files: true
+      - name: Deploy to GitHub Pages
+        if: ${{ matrix.lang == 'en' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site
+          enable_jekyll: false
+          user_name: QubitPi
+          user_email: jack20220723@gmail.com
+          cname: fastapi.qubitpi.org
 
   # https://github.com/marketplace/actions/alls-green#why
   docs-all-green:  # This job does nothing and is only used for the branch protection
