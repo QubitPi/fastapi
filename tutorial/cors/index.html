@@ -4840,8 +4840,13 @@
 <li><code>allow_origin_regex</code> - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. <code>'https://.*\.example\.org'</code>.</li>
 <li><code>allow_methods</code> - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to <code>['GET']</code>. You can use <code>['*']</code> to allow all standard methods.</li>
 <li><code>allow_headers</code> - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to <code>[]</code>. You can use <code>['*']</code> to allow all headers. The <code>Accept</code>, <code>Accept-Language</code>, <code>Content-Language</code> and <code>Content-Type</code> headers are always allowed for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests" class="external-link" rel="noopener" target="_blank">simple CORS requests</a>.</li>
-<li><code>allow_credentials</code> - Indicate that cookies should be supported for cross-origin requests. Defaults to <code>False</code>. Also, <code>allow_origins</code> cannot be set to <code>['*']</code> for credentials to be allowed, origins must be specified.</li>
-<li><code>expose_headers</code> - Indicate any response headers that should be made accessible to the browser. Defaults to <code>[]</code>.</li>
+<li>
+<p><code>allow_credentials</code> - Indicate that cookies should be supported for cross-origin requests. Defaults to <code>False</code>.</p>
+<p>None of <code>allow_origins</code>, <code>allow_methods</code> and <code>allow_headers</code> can be set to <code>['*']</code> if <code>allow_credentials</code> is set to <code>True</code>. All of them must be <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#credentialed_requests_and_wildcards" class="external-link" rel="noopener" target="_blank">explicitly specified</a>.</p>
+</li>
+<li>
+<p><code>expose_headers</code> - Indicate any response headers that should be made accessible to the browser. Defaults to <code>[]</code>.</p>
+</li>
 <li><code>max_age</code> - Sets a maximum time in seconds for browsers to cache CORS responses. Defaults to <code>600</code>.</li>
 </ul>
 <p>The middleware responds to two particular types of HTTP request...</p>

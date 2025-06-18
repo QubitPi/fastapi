@@ -9314,22 +9314,7 @@ or in a cookie).</p>
 
                   <details class="quote">
                     <summary>Source code in <code>fastapi/security/oauth2.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">494</span>
-<span class="normal">495</span>
-<span class="normal">496</span>
-<span class="normal">497</span>
-<span class="normal">498</span>
-<span class="normal">499</span>
-<span class="normal">500</span>
-<span class="normal">501</span>
-<span class="normal">502</span>
-<span class="normal">503</span>
-<span class="normal">504</span>
-<span class="normal">505</span>
-<span class="normal">506</span>
-<span class="normal">507</span>
-<span class="normal">508</span>
-<span class="normal">509</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">509</span>
 <span class="normal">510</span>
 <span class="normal">511</span>
 <span class="normal">512</span>
@@ -9401,94 +9386,109 @@ or in a cookie).</p>
 <span class="normal">578</span>
 <span class="normal">579</span>
 <span class="normal">580</span>
-<span class="normal">581</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-494"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="__span-0-495">    <span class="bp">self</span><span class="p">,</span>
-</span><span id="__span-0-496">    <span class="n">authorizationUrl</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-497">    <span class="n">tokenUrl</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-498">        <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-499">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-500"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-501"><span class="sd">            The URL to obtain the OAuth2 token.</span>
-</span><span id="__span-0-502"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-503">        <span class="p">),</span>
-</span><span id="__span-0-504">    <span class="p">],</span>
-</span><span id="__span-0-505">    <span class="n">refreshUrl</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-506">        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="__span-0-507">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-508"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-509"><span class="sd">            The URL to refresh the token and obtain a new one.</span>
-</span><span id="__span-0-510"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-511">        <span class="p">),</span>
-</span><span id="__span-0-512">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-513">    <span class="n">scheme_name</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-514">        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="__span-0-515">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-516"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-517"><span class="sd">            Security scheme name.</span>
-</span><span id="__span-0-518">
-</span><span id="__span-0-519"><span class="sd">            It will be included in the generated OpenAPI (e.g. visible at `/docs`).</span>
-</span><span id="__span-0-520"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-521">        <span class="p">),</span>
-</span><span id="__span-0-522">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-523">    <span class="n">scopes</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-524">        <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
-</span><span id="__span-0-525">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-526"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-527"><span class="sd">            The OAuth2 scopes that would be required by the *path operations* that</span>
-</span><span id="__span-0-528"><span class="sd">            use this dependency.</span>
-</span><span id="__span-0-529"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-530">        <span class="p">),</span>
-</span><span id="__span-0-531">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-532">    <span class="n">description</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-533">        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="__span-0-534">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-535"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-536"><span class="sd">            Security scheme description.</span>
-</span><span id="__span-0-537">
-</span><span id="__span-0-538"><span class="sd">            It will be included in the generated OpenAPI (e.g. visible at `/docs`).</span>
-</span><span id="__span-0-539"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-540">        <span class="p">),</span>
-</span><span id="__span-0-541">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-542">    <span class="n">auto_error</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-543">        <span class="nb">bool</span><span class="p">,</span>
-</span><span id="__span-0-544">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-545"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-546"><span class="sd">            By default, if no HTTP Authorization header is provided, required for</span>
-</span><span id="__span-0-547"><span class="sd">            OAuth2 authentication, it will automatically cancel the request and</span>
-</span><span id="__span-0-548"><span class="sd">            send the client an error.</span>
-</span><span id="__span-0-549">
-</span><span id="__span-0-550"><span class="sd">            If `auto_error` is set to `False`, when the HTTP Authorization header</span>
-</span><span id="__span-0-551"><span class="sd">            is not available, instead of erroring out, the dependency result will</span>
-</span><span id="__span-0-552"><span class="sd">            be `None`.</span>
-</span><span id="__span-0-553">
-</span><span id="__span-0-554"><span class="sd">            This is useful when you want to have optional authentication.</span>
-</span><span id="__span-0-555">
-</span><span id="__span-0-556"><span class="sd">            It is also useful when you want to have authentication that can be</span>
-</span><span id="__span-0-557"><span class="sd">            provided in one of multiple optional ways (for example, with OAuth2</span>
-</span><span id="__span-0-558"><span class="sd">            or in a cookie).</span>
-</span><span id="__span-0-559"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-560">        <span class="p">),</span>
-</span><span id="__span-0-561">    <span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-562"><span class="p">):</span>
-</span><span id="__span-0-563">    <span class="k">if</span> <span class="ow">not</span> <span class="n">scopes</span><span class="p">:</span>
-</span><span id="__span-0-564">        <span class="n">scopes</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="__span-0-565">    <span class="n">flows</span> <span class="o">=</span> <span class="n">OAuthFlowsModel</span><span class="p">(</span>
-</span><span id="__span-0-566">        <span class="n">authorizationCode</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span>
-</span><span id="__span-0-567">            <span class="n">Any</span><span class="p">,</span>
-</span><span id="__span-0-568">            <span class="p">{</span>
-</span><span id="__span-0-569">                <span class="s2">&quot;authorizationUrl&quot;</span><span class="p">:</span> <span class="n">authorizationUrl</span><span class="p">,</span>
-</span><span id="__span-0-570">                <span class="s2">&quot;tokenUrl&quot;</span><span class="p">:</span> <span class="n">tokenUrl</span><span class="p">,</span>
-</span><span id="__span-0-571">                <span class="s2">&quot;refreshUrl&quot;</span><span class="p">:</span> <span class="n">refreshUrl</span><span class="p">,</span>
-</span><span id="__span-0-572">                <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="n">scopes</span><span class="p">,</span>
-</span><span id="__span-0-573">            <span class="p">},</span>
-</span><span id="__span-0-574">        <span class="p">)</span>
-</span><span id="__span-0-575">    <span class="p">)</span>
-</span><span id="__span-0-576">    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="__span-0-577">        <span class="n">flows</span><span class="o">=</span><span class="n">flows</span><span class="p">,</span>
-</span><span id="__span-0-578">        <span class="n">scheme_name</span><span class="o">=</span><span class="n">scheme_name</span><span class="p">,</span>
-</span><span id="__span-0-579">        <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
-</span><span id="__span-0-580">        <span class="n">auto_error</span><span class="o">=</span><span class="n">auto_error</span><span class="p">,</span>
-</span><span id="__span-0-581">    <span class="p">)</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-509"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-0-510">    <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-0-511">    <span class="n">authorizationUrl</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-512">    <span class="n">tokenUrl</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-513">        <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-514">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-515"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-516"><span class="sd">            The URL to obtain the OAuth2 token.</span>
+</span><span id="__span-0-517"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-518">        <span class="p">),</span>
+</span><span id="__span-0-519">    <span class="p">],</span>
+</span><span id="__span-0-520">    <span class="n">refreshUrl</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-521">        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="__span-0-522">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-523"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-524"><span class="sd">            The URL to refresh the token and obtain a new one.</span>
+</span><span id="__span-0-525"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-526">        <span class="p">),</span>
+</span><span id="__span-0-527">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-528">    <span class="n">scheme_name</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-529">        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="__span-0-530">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-531"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-532"><span class="sd">            Security scheme name.</span>
+</span><span id="__span-0-533">
+</span><span id="__span-0-534"><span class="sd">            It will be included in the generated OpenAPI (e.g. visible at `/docs`).</span>
+</span><span id="__span-0-535"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-536">        <span class="p">),</span>
+</span><span id="__span-0-537">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-538">    <span class="n">scopes</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-539">        <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
+</span><span id="__span-0-540">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-541"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-542"><span class="sd">            The OAuth2 scopes that would be required by the *path operations* that</span>
+</span><span id="__span-0-543"><span class="sd">            use this dependency.</span>
+</span><span id="__span-0-544"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-545">        <span class="p">),</span>
+</span><span id="__span-0-546">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-547">    <span class="n">description</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-548">        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="__span-0-549">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-550"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-551"><span class="sd">            Security scheme description.</span>
+</span><span id="__span-0-552">
+</span><span id="__span-0-553"><span class="sd">            It will be included in the generated OpenAPI (e.g. visible at `/docs`).</span>
+</span><span id="__span-0-554"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-555">        <span class="p">),</span>
+</span><span id="__span-0-556">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-557">    <span class="n">auto_error</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-558">        <span class="nb">bool</span><span class="p">,</span>
+</span><span id="__span-0-559">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-560"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-561"><span class="sd">            By default, if no HTTP Authorization header is provided, required for</span>
+</span><span id="__span-0-562"><span class="sd">            OAuth2 authentication, it will automatically cancel the request and</span>
+</span><span id="__span-0-563"><span class="sd">            send the client an error.</span>
+</span><span id="__span-0-564">
+</span><span id="__span-0-565"><span class="sd">            If `auto_error` is set to `False`, when the HTTP Authorization header</span>
+</span><span id="__span-0-566"><span class="sd">            is not available, instead of erroring out, the dependency result will</span>
+</span><span id="__span-0-567"><span class="sd">            be `None`.</span>
+</span><span id="__span-0-568">
+</span><span id="__span-0-569"><span class="sd">            This is useful when you want to have optional authentication.</span>
+</span><span id="__span-0-570">
+</span><span id="__span-0-571"><span class="sd">            It is also useful when you want to have authentication that can be</span>
+</span><span id="__span-0-572"><span class="sd">            provided in one of multiple optional ways (for example, with OAuth2</span>
+</span><span id="__span-0-573"><span class="sd">            or in a cookie).</span>
+</span><span id="__span-0-574"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-575">        <span class="p">),</span>
+</span><span id="__span-0-576">    <span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-577"><span class="p">):</span>
+</span><span id="__span-0-578">    <span class="k">if</span> <span class="ow">not</span> <span class="n">scopes</span><span class="p">:</span>
+</span><span id="__span-0-579">        <span class="n">scopes</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-0-580">    <span class="n">flows</span> <span class="o">=</span> <span class="n">OAuthFlowsModel</span><span class="p">(</span>
+</span><span id="__span-0-581">        <span class="n">authorizationCode</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span>
+</span><span id="__span-0-582">            <span class="n">Any</span><span class="p">,</span>
+</span><span id="__span-0-583">            <span class="p">{</span>
+</span><span id="__span-0-584">                <span class="s2">&quot;authorizationUrl&quot;</span><span class="p">:</span> <span class="n">authorizationUrl</span><span class="p">,</span>
+</span><span id="__span-0-585">                <span class="s2">&quot;tokenUrl&quot;</span><span class="p">:</span> <span class="n">tokenUrl</span><span class="p">,</span>
+</span><span id="__span-0-586">                <span class="s2">&quot;refreshUrl&quot;</span><span class="p">:</span> <span class="n">refreshUrl</span><span class="p">,</span>
+</span><span id="__span-0-587">                <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="n">scopes</span><span class="p">,</span>
+</span><span id="__span-0-588">            <span class="p">},</span>
+</span><span id="__span-0-589">        <span class="p">)</span>
+</span><span id="__span-0-590">    <span class="p">)</span>
+</span><span id="__span-0-591">    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-0-592">        <span class="n">flows</span><span class="o">=</span><span class="n">flows</span><span class="p">,</span>
+</span><span id="__span-0-593">        <span class="n">scheme_name</span><span class="o">=</span><span class="n">scheme_name</span><span class="p">,</span>
+</span><span id="__span-0-594">        <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+</span><span id="__span-0-595">        <span class="n">auto_error</span><span class="o">=</span><span class="n">auto_error</span><span class="p">,</span>
+</span><span id="__span-0-596">    <span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
                   </details>
 
@@ -9592,7 +9592,8 @@ or in a cookie).</p>
 </span><span id="__span-0-4">    <span class="n">scopes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-5">    <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-6">    <span class="n">auto_error</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-7"><span class="p">)</span>
+</span><span id="__span-0-7">    <span class="n">refreshUrl</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-8"><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents first">
@@ -9725,6 +9726,26 @@ or in a cookie).</p>
               </p>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>refreshUrl</code>
+            </td>
+            <td class="doc-param-details">
+              <div class="doc-md-description">
+                <p>The URL to refresh the token and obtain a new one.</p>
+              </div>
+              <p>
+                  <span class="doc-param-annotation">
+                    <b>TYPE:</b>
+                      <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+                  </span>
+                  <span class="doc-param-default">
+                    <b>DEFAULT:</b>
+                      <code>None</code>
+                  </span>
+              </p>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -9806,7 +9827,22 @@ or in a cookie).</p>
 <span class="normal">468</span>
 <span class="normal">469</span>
 <span class="normal">470</span>
-<span class="normal">471</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-400"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-400"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="__span-0-401">    <span class="bp">self</span><span class="p">,</span>
 </span><span id="__span-0-402">    <span class="n">tokenUrl</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
 </span><span id="__span-0-403">        <span class="nb">str</span><span class="p">,</span>
@@ -9866,18 +9902,33 @@ or in a cookie).</p>
 </span><span id="__span-0-457"><span class="sd">            &quot;&quot;&quot;</span>
 </span><span id="__span-0-458">        <span class="p">),</span>
 </span><span id="__span-0-459">    <span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-460"><span class="p">):</span>
-</span><span id="__span-0-461">    <span class="k">if</span> <span class="ow">not</span> <span class="n">scopes</span><span class="p">:</span>
-</span><span id="__span-0-462">        <span class="n">scopes</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="__span-0-463">    <span class="n">flows</span> <span class="o">=</span> <span class="n">OAuthFlowsModel</span><span class="p">(</span>
-</span><span id="__span-0-464">        <span class="n">password</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span><span class="n">Any</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;tokenUrl&quot;</span><span class="p">:</span> <span class="n">tokenUrl</span><span class="p">,</span> <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="n">scopes</span><span class="p">})</span>
-</span><span id="__span-0-465">    <span class="p">)</span>
-</span><span id="__span-0-466">    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="__span-0-467">        <span class="n">flows</span><span class="o">=</span><span class="n">flows</span><span class="p">,</span>
-</span><span id="__span-0-468">        <span class="n">scheme_name</span><span class="o">=</span><span class="n">scheme_name</span><span class="p">,</span>
-</span><span id="__span-0-469">        <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
-</span><span id="__span-0-470">        <span class="n">auto_error</span><span class="o">=</span><span class="n">auto_error</span><span class="p">,</span>
-</span><span id="__span-0-471">    <span class="p">)</span>
+</span><span id="__span-0-460">    <span class="n">refreshUrl</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-461">        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="__span-0-462">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-463"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-464"><span class="sd">            The URL to refresh the token and obtain a new one.</span>
+</span><span id="__span-0-465"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-466">        <span class="p">),</span>
+</span><span id="__span-0-467">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-468"><span class="p">):</span>
+</span><span id="__span-0-469">    <span class="k">if</span> <span class="ow">not</span> <span class="n">scopes</span><span class="p">:</span>
+</span><span id="__span-0-470">        <span class="n">scopes</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-0-471">    <span class="n">flows</span> <span class="o">=</span> <span class="n">OAuthFlowsModel</span><span class="p">(</span>
+</span><span id="__span-0-472">        <span class="n">password</span><span class="o">=</span><span class="n">cast</span><span class="p">(</span>
+</span><span id="__span-0-473">            <span class="n">Any</span><span class="p">,</span>
+</span><span id="__span-0-474">            <span class="p">{</span>
+</span><span id="__span-0-475">                <span class="s2">&quot;tokenUrl&quot;</span><span class="p">:</span> <span class="n">tokenUrl</span><span class="p">,</span>
+</span><span id="__span-0-476">                <span class="s2">&quot;refreshUrl&quot;</span><span class="p">:</span> <span class="n">refreshUrl</span><span class="p">,</span>
+</span><span id="__span-0-477">                <span class="s2">&quot;scopes&quot;</span><span class="p">:</span> <span class="n">scopes</span><span class="p">,</span>
+</span><span id="__span-0-478">            <span class="p">},</span>
+</span><span id="__span-0-479">        <span class="p">)</span>
+</span><span id="__span-0-480">    <span class="p">)</span>
+</span><span id="__span-0-481">    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-0-482">        <span class="n">flows</span><span class="o">=</span><span class="n">flows</span><span class="p">,</span>
+</span><span id="__span-0-483">        <span class="n">scheme_name</span><span class="o">=</span><span class="n">scheme_name</span><span class="p">,</span>
+</span><span id="__span-0-484">        <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+</span><span id="__span-0-485">        <span class="n">auto_error</span><span class="o">=</span><span class="n">auto_error</span><span class="p">,</span>
+</span><span id="__span-0-486">    <span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
                   </details>
 
@@ -10296,7 +10347,7 @@ auth.</p>
 </span><span id="__span-0-85">    <span class="p">],</span>
 </span><span id="__span-0-86">    <span class="n">password</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
 </span><span id="__span-0-87">        <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-88">        <span class="n">Form</span><span class="p">(),</span>
+</span><span id="__span-0-88">        <span class="n">Form</span><span class="p">(</span><span class="n">json_schema_extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}),</span>
 </span><span id="__span-0-89">        <span class="n">Doc</span><span class="p">(</span>
 </span><span id="__span-0-90"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-0-91"><span class="sd">            `password` string. The OAuth2 spec requires the exact field name</span>
@@ -10341,7 +10392,7 @@ auth.</p>
 </span><span id="__span-0-130">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-131">    <span class="n">client_secret</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
 </span><span id="__span-0-132">        <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
-</span><span id="__span-0-133">        <span class="n">Form</span><span class="p">(),</span>
+</span><span id="__span-0-133">        <span class="n">Form</span><span class="p">(</span><span class="n">json_schema_extra</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">}),</span>
 </span><span id="__span-0-134">        <span class="n">Doc</span><span class="p">(</span>
 </span><span id="__span-0-135"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-0-136"><span class="sd">            If there&#39;s a `client_password` (and a `client_id`), they can be sent</span>
@@ -11130,22 +11181,7 @@ all those dependencies in a single place.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>fastapi/security/oauth2.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">611</span>
-<span class="normal">612</span>
-<span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span>
-<span class="normal">619</span>
-<span class="normal">620</span>
-<span class="normal">621</span>
-<span class="normal">622</span>
-<span class="normal">623</span>
-<span class="normal">624</span>
-<span class="normal">625</span>
-<span class="normal">626</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">626</span>
 <span class="normal">627</span>
 <span class="normal">628</span>
 <span class="normal">629</span>
@@ -11157,34 +11193,49 @@ all those dependencies in a single place.</p>
 <span class="normal">635</span>
 <span class="normal">636</span>
 <span class="normal">637</span>
-<span class="normal">638</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-611"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="__span-0-612">    <span class="bp">self</span><span class="p">,</span>
-</span><span id="__span-0-613">    <span class="n">scopes</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-614">        <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
-</span><span id="__span-0-615">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-616"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-617"><span class="sd">            This will be filled by FastAPI.</span>
-</span><span id="__span-0-618"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-619">        <span class="p">),</span>
-</span><span id="__span-0-620">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-621"><span class="p">):</span>
-</span><span id="__span-0-622">    <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-623">        <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-</span><span id="__span-0-624">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-625"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-626"><span class="sd">            The list of all the scopes required by dependencies.</span>
-</span><span id="__span-0-627"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-628">        <span class="p">),</span>
-</span><span id="__span-0-629">    <span class="p">]</span> <span class="o">=</span> <span class="n">scopes</span> <span class="ow">or</span> <span class="p">[]</span>
-</span><span id="__span-0-630">    <span class="bp">self</span><span class="o">.</span><span class="n">scope_str</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-</span><span id="__span-0-631">        <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-632">        <span class="n">Doc</span><span class="p">(</span>
-</span><span id="__span-0-633"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-634"><span class="sd">            All the scopes required by all the dependencies in a single string</span>
-</span><span id="__span-0-635"><span class="sd">            separated by spaces, as defined in the OAuth2 specification.</span>
-</span><span id="__span-0-636"><span class="sd">            &quot;&quot;&quot;</span>
-</span><span id="__span-0-637">        <span class="p">),</span>
-</span><span id="__span-0-638">    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">)</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span>
+<span class="normal">649</span>
+<span class="normal">650</span>
+<span class="normal">651</span>
+<span class="normal">652</span>
+<span class="normal">653</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-626"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-0-627">    <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-0-628">    <span class="n">scopes</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-629">        <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+</span><span id="__span-0-630">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-631"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-632"><span class="sd">            This will be filled by FastAPI.</span>
+</span><span id="__span-0-633"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-634">        <span class="p">),</span>
+</span><span id="__span-0-635">    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-636"><span class="p">):</span>
+</span><span id="__span-0-637">    <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-638">        <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+</span><span id="__span-0-639">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-640"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-641"><span class="sd">            The list of all the scopes required by dependencies.</span>
+</span><span id="__span-0-642"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-643">        <span class="p">),</span>
+</span><span id="__span-0-644">    <span class="p">]</span> <span class="o">=</span> <span class="n">scopes</span> <span class="ow">or</span> <span class="p">[]</span>
+</span><span id="__span-0-645">    <span class="bp">self</span><span class="o">.</span><span class="n">scope_str</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
+</span><span id="__span-0-646">        <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-647">        <span class="n">Doc</span><span class="p">(</span>
+</span><span id="__span-0-648"><span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-649"><span class="sd">            All the scopes required by all the dependencies in a single string</span>
+</span><span id="__span-0-650"><span class="sd">            separated by spaces, as defined in the OAuth2 specification.</span>
+</span><span id="__span-0-651"><span class="sd">            &quot;&quot;&quot;</span>
+</span><span id="__span-0-652">        <span class="p">),</span>
+</span><span id="__span-0-653">    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
                   </details>
 

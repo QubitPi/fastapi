@@ -2040,6 +2040,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multiple-middleware-execution-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple middleware execution order
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#other-middlewares" class="md-nav__link">
     <span class="md-ellipsis">
       Other middlewares
@@ -4670,6 +4679,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multiple-middleware-execution-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple middleware execution order
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#other-middlewares" class="md-nav__link">
     <span class="md-ellipsis">
       Other middlewares
@@ -4785,6 +4803,24 @@
 <p class="admonition-title">Tip</p>
 <p>Here we use <a href="https://docs.python.org/3/library/time.html#time.perf_counter" class="external-link" target="_blank"><code>time.perf_counter()</code></a> instead of <code>time.time()</code> because it can be more precise for these use cases. 🤓</p>
 </div>
+<h2 id="multiple-middleware-execution-order">Multiple middleware execution order<a class="headerlink" href="#multiple-middleware-execution-order" title="Permanent link">&para;</a></h2>
+<p>When you add multiple middlewares using either <code>@app.middleware()</code> decorator or <code>app.add_middleware()</code> method, each new middleware wraps the application, forming a stack. The last middleware added is the <em>outermost</em>, and the first is the <em>innermost</em>.</p>
+<p>On the request path, the <em>outermost</em> middleware runs first.</p>
+<p>On the response path, it runs last.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">MiddlewareA</span><span class="p">)</span>
+</span><span id="__span-2-2"><span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">MiddlewareB</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This results in the following execution order:</p>
+<ul>
+<li>
+<p><strong>Request</strong>: MiddlewareB → MiddlewareA → route</p>
+</li>
+<li>
+<p><strong>Response</strong>: route → MiddlewareA → MiddlewareB</p>
+</li>
+</ul>
+<p>This stacking behavior ensures that middlewares are executed in a predictable and controllable order.</p>
 <h2 id="other-middlewares">Other middlewares<a class="headerlink" href="#other-middlewares" title="Permanent link">&para;</a></h2>
 <p>You can later read more about other middlewares in the <a class="internal-link" href="../../advanced/middleware/" target="_blank">Advanced User Guide: Advanced Middleware</a>.</p>
 <p>You will read about how to handle <abbr title="Cross-Origin Resource Sharing">CORS</abbr> with a middleware in the next section.</p>
