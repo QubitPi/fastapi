@@ -942,6 +942,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#without-fastapi-cloud-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Without fastapi-cloud-cli
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#additional-optional-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       Additional Optional Dependencies
@@ -5154,6 +5163,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#without-fastapi-cloud-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Without fastapi-cloud-cli
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#additional-optional-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       Additional Optional Dependencies
@@ -5582,13 +5600,18 @@
 <li><a href="https://jinja.palletsprojects.com" target="_blank"><code>jinja2</code></a> - Required if you want to use the default template configuration.</li>
 <li><a href="https://github.com/Kludex/python-multipart" target="_blank"><code>python-multipart</code></a> - Required if you want to support form <abbr title="converting the string that comes from an HTTP request into Python data">"parsing"</abbr>, with <code>request.form()</code>.</li>
 </ul>
-<p>Used by FastAPI / Starlette:</p>
+<p>Used by FastAPI:</p>
 <ul>
 <li><a href="https://www.uvicorn.org" target="_blank"><code>uvicorn</code></a> - for the server that loads and serves your application. This includes <code>uvicorn[standard]</code>, which includes some dependencies (e.g. <code>uvloop</code>) needed for high performance serving.</li>
-<li><code>fastapi-cli</code> - to provide the <code>fastapi</code> command.</li>
+<li><code>fastapi-cli[standard]</code> - to provide the <code>fastapi</code> command.<ul>
+<li>This includes <code>fastapi-cloud-cli</code>, which allows you to deploy your FastAPI application to <a href="https://fastapicloud.com" class="external-link" target="_blank">FastAPI Cloud</a>.</li>
+</ul>
+</li>
 </ul>
 <h3 id="without-standard-dependencies">Without <code>standard</code> Dependencies<a class="headerlink" href="#without-standard-dependencies" title="Permanent link">&para;</a></h3>
 <p>If you don't want to include the <code>standard</code> optional dependencies, you can install with <code>pip install fastapi</code> instead of <code>pip install "fastapi[standard]"</code>.</p>
+<h3 id="without-fastapi-cloud-cli">Without <code>fastapi-cloud-cli</code><a class="headerlink" href="#without-fastapi-cloud-cli" title="Permanent link">&para;</a></h3>
+<p>If you want to install FastAPI with the standard dependencies but without the <code>fastapi-cloud-cli</code>, you can install with <code>pip install "fastapi[standard-no-fastapi-cloud-cli]"</code>.</p>
 <h3 id="additional-optional-dependencies">Additional Optional Dependencies<a class="headerlink" href="#additional-optional-dependencies" title="Permanent link">&para;</a></h3>
 <p>There are some additional dependencies you might want to install.</p>
 <p>Additional optional Pydantic dependencies:</p>
