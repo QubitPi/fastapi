@@ -5267,21 +5267,21 @@
 
                   <details class="quote">
                     <summary>Source code in <code>starlette/requests.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">201</span>
-<span class="normal">202</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">202</span>
 <span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
 <span class="normal">206</span>
 <span class="normal">207</span>
-<span class="normal">208</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-201"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">:</span> <span class="n">Scope</span><span class="p">,</span> <span class="n">receive</span><span class="p">:</span> <span class="n">Receive</span> <span class="o">=</span> <span class="n">empty_receive</span><span class="p">,</span> <span class="n">send</span><span class="p">:</span> <span class="n">Send</span> <span class="o">=</span> <span class="n">empty_send</span><span class="p">):</span>
-</span><span id="__span-0-202">    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
-</span><span id="__span-0-203">    <span class="k">assert</span> <span class="n">scope</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;http&quot;</span>
-</span><span id="__span-0-204">    <span class="bp">self</span><span class="o">.</span><span class="n">_receive</span> <span class="o">=</span> <span class="n">receive</span>
-</span><span id="__span-0-205">    <span class="bp">self</span><span class="o">.</span><span class="n">_send</span> <span class="o">=</span> <span class="n">send</span>
-</span><span id="__span-0-206">    <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="__span-0-207">    <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="__span-0-208">    <span class="bp">self</span><span class="o">.</span><span class="n">_form</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="normal">208</span>
+<span class="normal">209</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-202"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scope</span><span class="p">:</span> <span class="n">Scope</span><span class="p">,</span> <span class="n">receive</span><span class="p">:</span> <span class="n">Receive</span> <span class="o">=</span> <span class="n">empty_receive</span><span class="p">,</span> <span class="n">send</span><span class="p">:</span> <span class="n">Send</span> <span class="o">=</span> <span class="n">empty_send</span><span class="p">):</span>
+</span><span id="__span-0-203">    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span>
+</span><span id="__span-0-204">    <span class="k">assert</span> <span class="n">scope</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;http&quot;</span>
+</span><span id="__span-0-205">    <span class="bp">self</span><span class="o">.</span><span class="n">_receive</span> <span class="o">=</span> <span class="n">receive</span>
+</span><span id="__span-0-206">    <span class="bp">self</span><span class="o">.</span><span class="n">_send</span> <span class="o">=</span> <span class="n">send</span>
+</span><span id="__span-0-207">    <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-0-208">    <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="__span-0-209">    <span class="bp">self</span><span class="o">.</span><span class="n">_form</span> <span class="o">=</span> <span class="kc">None</span>
 </span></code></pre></div></td></tr></table></div>
                   </details>
 
@@ -5627,17 +5627,17 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
-<span class="normal">183</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
 <span class="normal">186</span>
-<span class="normal">187</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-182"><span class="k">def</span><span class="w"> </span><span class="nf">url_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">**</span><span class="n">path_params</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">URL</span><span class="p">:</span>
-</span><span id="__span-0-183">    <span class="n">url_path_provider</span><span class="p">:</span> <span class="n">Router</span> <span class="o">|</span> <span class="n">Starlette</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;router&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
-</span><span id="__span-0-184">    <span class="k">if</span> <span class="n">url_path_provider</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-185">        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The `url_for` method can only be used inside a Starlette application or with a router.&quot;</span><span class="p">)</span>
-</span><span id="__span-0-186">    <span class="n">url_path</span> <span class="o">=</span> <span class="n">url_path_provider</span><span class="o">.</span><span class="n">url_path_for</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">path_params</span><span class="p">)</span>
-</span><span id="__span-0-187">    <span class="k">return</span> <span class="n">url_path</span><span class="o">.</span><span class="n">make_absolute_url</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">)</span>
+<span class="normal">187</span>
+<span class="normal">188</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-183"><span class="k">def</span><span class="w"> </span><span class="nf">url_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">**</span><span class="n">path_params</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">URL</span><span class="p">:</span>
+</span><span id="__span-0-184">    <span class="n">url_path_provider</span><span class="p">:</span> <span class="n">Router</span> <span class="o">|</span> <span class="n">Starlette</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;router&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
+</span><span id="__span-0-185">    <span class="k">if</span> <span class="n">url_path_provider</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-186">        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The `url_for` method can only be used inside a Starlette application or with a router.&quot;</span><span class="p">)</span>
+</span><span id="__span-0-187">    <span class="n">url_path</span> <span class="o">=</span> <span class="n">url_path_provider</span><span class="o">.</span><span class="n">url_path_for</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">path_params</span><span class="p">)</span>
+</span><span id="__span-0-188">    <span class="k">return</span> <span class="n">url_path</span><span class="o">.</span><span class="n">make_absolute_url</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5663,8 +5663,7 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">218</span>
-<span class="normal">219</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
@@ -5681,25 +5680,26 @@
 <span class="normal">233</span>
 <span class="normal">234</span>
 <span class="normal">235</span>
-<span class="normal">236</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-218"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stream</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">AsyncGenerator</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-</span><span id="__span-0-219">    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_body&quot;</span><span class="p">):</span>
-</span><span id="__span-0-220">        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span>
-</span><span id="__span-0-221">        <span class="k">yield</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
-</span><span id="__span-0-222">        <span class="k">return</span>
-</span><span id="__span-0-223">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span><span class="p">:</span>
-</span><span id="__span-0-224">        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Stream consumed&quot;</span><span class="p">)</span>
-</span><span id="__span-0-225">    <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span><span class="p">:</span>
-</span><span id="__span-0-226">        <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_receive</span><span class="p">()</span>
-</span><span id="__span-0-227">        <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;http.request&quot;</span><span class="p">:</span>
-</span><span id="__span-0-228">            <span class="n">body</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span id="__span-0-229">            <span class="k">if</span> <span class="ow">not</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;more_body&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-</span><span id="__span-0-230">                <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-0-231">            <span class="k">if</span> <span class="n">body</span><span class="p">:</span>
-</span><span id="__span-0-232">                <span class="k">yield</span> <span class="n">body</span>
-</span><span id="__span-0-233">        <span class="k">elif</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;http.disconnect&quot;</span><span class="p">:</span>  <span class="c1"># pragma: no branch</span>
-</span><span id="__span-0-234">            <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-0-235">            <span class="k">raise</span> <span class="n">ClientDisconnect</span><span class="p">()</span>
-</span><span id="__span-0-236">    <span class="k">yield</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+<span class="normal">236</span>
+<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-219"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">stream</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+</span><span id="__span-0-220">    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_body&quot;</span><span class="p">):</span>
+</span><span id="__span-0-221">        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span>
+</span><span id="__span-0-222">        <span class="k">yield</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-0-223">        <span class="k">return</span>
+</span><span id="__span-0-224">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span><span class="p">:</span>
+</span><span id="__span-0-225">        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Stream consumed&quot;</span><span class="p">)</span>
+</span><span id="__span-0-226">    <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span><span class="p">:</span>
+</span><span id="__span-0-227">        <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_receive</span><span class="p">()</span>
+</span><span id="__span-0-228">        <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;http.request&quot;</span><span class="p">:</span>
+</span><span id="__span-0-229">            <span class="n">body</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-0-230">            <span class="k">if</span> <span class="ow">not</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;more_body&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+</span><span id="__span-0-231">                <span class="bp">self</span><span class="o">.</span><span class="n">_stream_consumed</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-0-232">            <span class="k">if</span> <span class="n">body</span><span class="p">:</span>
+</span><span id="__span-0-233">                <span class="k">yield</span> <span class="n">body</span>
+</span><span id="__span-0-234">        <span class="k">elif</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;http.disconnect&quot;</span><span class="p">:</span>  <span class="c1"># pragma: no branch</span>
+</span><span id="__span-0-235">            <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-0-236">            <span class="k">raise</span> <span class="n">ClientDisconnect</span><span class="p">()</span>
+</span><span id="__span-0-237">    <span class="k">yield</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5725,19 +5725,19 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">238</span>
-<span class="normal">239</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
 <span class="normal">240</span>
 <span class="normal">241</span>
 <span class="normal">242</span>
 <span class="normal">243</span>
-<span class="normal">244</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-238"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">body</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-</span><span id="__span-0-239">    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_body&quot;</span><span class="p">):</span>
-</span><span id="__span-0-240">        <span class="n">chunks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-0-241">        <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">():</span>
-</span><span id="__span-0-242">            <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
-</span><span id="__span-0-243">        <span class="bp">self</span><span class="o">.</span><span class="n">_body</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
-</span><span id="__span-0-244">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span>
+<span class="normal">244</span>
+<span class="normal">245</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-239"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">body</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span id="__span-0-240">    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_body&quot;</span><span class="p">):</span>
+</span><span id="__span-0-241">        <span class="n">chunks</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-242">        <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">():</span>
+</span><span id="__span-0-243">            <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span><span id="__span-0-244">        <span class="bp">self</span><span class="o">.</span><span class="n">_body</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+</span><span id="__span-0-245">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_body</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5763,15 +5763,15 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">246</span>
-<span class="normal">247</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
-<span class="normal">250</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-246"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">:</span>
-</span><span id="__span-0-247">    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_json&quot;</span><span class="p">):</span>  <span class="c1"># pragma: no branch</span>
-</span><span id="__span-0-248">        <span class="n">body</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="p">()</span>
-</span><span id="__span-0-249">        <span class="bp">self</span><span class="o">.</span><span class="n">_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
-</span><span id="__span-0-250">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_json</span>
+<span class="normal">250</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-247"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+</span><span id="__span-0-248">    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_json&quot;</span><span class="p">):</span>  <span class="c1"># pragma: no branch</span>
+</span><span id="__span-0-249">        <span class="n">body</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="p">()</span>
+</span><span id="__span-0-250">        <span class="bp">self</span><span class="o">.</span><span class="n">_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+</span><span id="__span-0-251">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_json</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5798,8 +5798,7 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">287</span>
-<span class="normal">288</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">288</span>
 <span class="normal">289</span>
 <span class="normal">290</span>
 <span class="normal">291</span>
@@ -5807,16 +5806,17 @@
 <span class="normal">293</span>
 <span class="normal">294</span>
 <span class="normal">295</span>
-<span class="normal">296</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-287"><span class="k">def</span><span class="w"> </span><span class="nf">form</span><span class="p">(</span>
-</span><span id="__span-0-288">    <span class="bp">self</span><span class="p">,</span>
-</span><span id="__span-0-289">    <span class="o">*</span><span class="p">,</span>
-</span><span id="__span-0-290">    <span class="n">max_files</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
-</span><span id="__span-0-291">    <span class="n">max_fields</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
-</span><span id="__span-0-292">    <span class="n">max_part_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
-</span><span id="__span-0-293"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AwaitableOrContextManager</span><span class="p">[</span><span class="n">FormData</span><span class="p">]:</span>
-</span><span id="__span-0-294">    <span class="k">return</span> <span class="n">AwaitableOrContextManagerWrapper</span><span class="p">(</span>
-</span><span id="__span-0-295">        <span class="bp">self</span><span class="o">.</span><span class="n">_get_form</span><span class="p">(</span><span class="n">max_files</span><span class="o">=</span><span class="n">max_files</span><span class="p">,</span> <span class="n">max_fields</span><span class="o">=</span><span class="n">max_fields</span><span class="p">,</span> <span class="n">max_part_size</span><span class="o">=</span><span class="n">max_part_size</span><span class="p">)</span>
-</span><span id="__span-0-296">    <span class="p">)</span>
+<span class="normal">296</span>
+<span class="normal">297</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-288"><span class="k">def</span><span class="w"> </span><span class="nf">form</span><span class="p">(</span>
+</span><span id="__span-0-289">    <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-0-290">    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-291">    <span class="n">max_files</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+</span><span id="__span-0-292">    <span class="n">max_fields</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+</span><span id="__span-0-293">    <span class="n">max_part_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+</span><span id="__span-0-294"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AwaitableOrContextManager</span><span class="p">[</span><span class="n">FormData</span><span class="p">]:</span>
+</span><span id="__span-0-295">    <span class="k">return</span> <span class="n">AwaitableOrContextManagerWrapper</span><span class="p">(</span>
+</span><span id="__span-0-296">        <span class="bp">self</span><span class="o">.</span><span class="n">_get_form</span><span class="p">(</span><span class="n">max_files</span><span class="o">=</span><span class="n">max_files</span><span class="p">,</span> <span class="n">max_fields</span><span class="o">=</span><span class="n">max_fields</span><span class="p">,</span> <span class="n">max_part_size</span><span class="o">=</span><span class="n">max_part_size</span><span class="p">)</span>
+</span><span id="__span-0-297">    <span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5842,11 +5842,11 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-298"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-299">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_form</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no branch</span>
-</span><span id="__span-0-300">        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_form</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-299"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-300">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_form</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no branch</span>
+</span><span id="__span-0-301">        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_form</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5872,8 +5872,7 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">302</span>
-<span class="normal">303</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span>
 <span class="normal">306</span>
@@ -5884,19 +5883,20 @@
 <span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
-<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-302"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">is_disconnected</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span id="__span-0-303">    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span><span class="p">:</span>
-</span><span id="__span-0-304">        <span class="n">message</span><span class="p">:</span> <span class="n">Message</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span id="__span-0-305">
-</span><span id="__span-0-306">        <span class="c1"># If message isn&#39;t immediately available, move on</span>
-</span><span id="__span-0-307">        <span class="k">with</span> <span class="n">anyio</span><span class="o">.</span><span class="n">CancelScope</span><span class="p">()</span> <span class="k">as</span> <span class="n">cs</span><span class="p">:</span>
-</span><span id="__span-0-308">            <span class="n">cs</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
-</span><span id="__span-0-309">            <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_receive</span><span class="p">()</span>
-</span><span id="__span-0-310">
-</span><span id="__span-0-311">        <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;http.disconnect&quot;</span><span class="p">:</span>
-</span><span id="__span-0-312">            <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-0-313">
-</span><span id="__span-0-314">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span>
+<span class="normal">314</span>
+<span class="normal">315</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-303"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">is_disconnected</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="__span-0-304">    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span><span class="p">:</span>
+</span><span id="__span-0-305">        <span class="n">message</span><span class="p">:</span> <span class="n">Message</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span id="__span-0-306">
+</span><span id="__span-0-307">        <span class="c1"># If message isn&#39;t immediately available, move on</span>
+</span><span id="__span-0-308">        <span class="k">with</span> <span class="n">anyio</span><span class="o">.</span><span class="n">CancelScope</span><span class="p">()</span> <span class="k">as</span> <span class="n">cs</span><span class="p">:</span>
+</span><span id="__span-0-309">            <span class="n">cs</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</span><span id="__span-0-310">            <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_receive</span><span class="p">()</span>
+</span><span id="__span-0-311">
+</span><span id="__span-0-312">        <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;http.disconnect&quot;</span><span class="p">:</span>
+</span><span id="__span-0-313">            <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-0-314">
+</span><span id="__span-0-315">    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_disconnected</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5922,19 +5922,19 @@
 
             <details class="quote">
               <summary>Source code in <code>starlette/requests.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">316</span>
-<span class="normal">317</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">317</span>
 <span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
-<span class="normal">322</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-316"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">send_push_promise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-317">    <span class="k">if</span> <span class="s2">&quot;http.response.push&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;extensions&quot;</span><span class="p">,</span> <span class="p">{}):</span>
-</span><span id="__span-0-318">        <span class="n">raw_headers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="__span-0-319">        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">SERVER_PUSH_HEADERS_TO_COPY</span><span class="p">:</span>
-</span><span id="__span-0-320">            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-</span><span id="__span-0-321">                <span class="n">raw_headers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;latin-1&quot;</span><span class="p">),</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)))</span>
-</span><span id="__span-0-322">        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http.response.push&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="n">raw_headers</span><span class="p">})</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-317"><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">send_push_promise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-318">    <span class="k">if</span> <span class="s2">&quot;http.response.push&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;extensions&quot;</span><span class="p">,</span> <span class="p">{}):</span>
+</span><span id="__span-0-319">        <span class="n">raw_headers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-320">        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">SERVER_PUSH_HEADERS_TO_COPY</span><span class="p">:</span>
+</span><span id="__span-0-321">            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span><span id="__span-0-322">                <span class="n">raw_headers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;latin-1&quot;</span><span class="p">),</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;latin-1&quot;</span><span class="p">)))</span>
+</span><span id="__span-0-323">        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;http.response.push&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span> <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="n">raw_headers</span><span class="p">})</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
