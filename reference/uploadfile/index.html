@@ -5065,7 +5065,11 @@ needed for non-async code.</p>
 <span class="normal">426</span>
 <span class="normal">427</span>
 <span class="normal">428</span>
-<span class="normal">429</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-418"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-418"><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="__span-0-419">    <span class="bp">self</span><span class="p">,</span>
 </span><span id="__span-0-420">    <span class="n">file</span><span class="p">:</span> <span class="n">BinaryIO</span><span class="p">,</span>
 </span><span id="__span-0-421">    <span class="o">*</span><span class="p">,</span>
@@ -5077,6 +5081,10 @@ needed for non-async code.</p>
 </span><span id="__span-0-427">    <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
 </span><span id="__span-0-428">    <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
 </span><span id="__span-0-429">    <span class="bp">self</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span> <span class="ow">or</span> <span class="n">Headers</span><span class="p">()</span>
+</span><span id="__span-0-430">
+</span><span id="__span-0-431">    <span class="c1"># Capture max size from SpooledTemporaryFile if one is provided. This slightly speeds up future checks.</span>
+</span><span id="__span-0-432">    <span class="c1"># Note 0 means unlimited mirroring SpooledTemporaryFile&#39;s __init__</span>
+</span><span id="__span-0-433">    <span class="bp">self</span><span class="o">.</span><span class="n">_max_mem_size</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;_max_size&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
                   </details>
 
