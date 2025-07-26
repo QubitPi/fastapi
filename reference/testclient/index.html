@@ -5930,27 +5930,7 @@ are merged with any values set on the client.</li>
 
             <details class="quote">
               <summary>Source code in <code>httpx/_client.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span>
-<span class="normal">326</span>
-<span class="normal">327</span>
-<span class="normal">328</span>
-<span class="normal">329</span>
-<span class="normal">330</span>
-<span class="normal">331</span>
-<span class="normal">332</span>
-<span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">340</span>
 <span class="normal">341</span>
 <span class="normal">342</span>
 <span class="normal">343</span>
@@ -5979,56 +5959,76 @@ are merged with any values set on the client.</li>
 <span class="normal">366</span>
 <span class="normal">367</span>
 <span class="normal">368</span>
-<span class="normal">369</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-320"><span class="k">def</span><span class="w"> </span><span class="nf">build_request</span><span class="p">(</span>
-</span><span id="__span-0-321">    <span class="bp">self</span><span class="p">,</span>
-</span><span id="__span-0-322">    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-323">    <span class="n">url</span><span class="p">:</span> <span class="n">URL</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-324">    <span class="o">*</span><span class="p">,</span>
-</span><span id="__span-0-325">    <span class="n">content</span><span class="p">:</span> <span class="n">RequestContent</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-326">    <span class="n">data</span><span class="p">:</span> <span class="n">RequestData</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-327">    <span class="n">files</span><span class="p">:</span> <span class="n">RequestFiles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-328">    <span class="n">json</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-329">    <span class="n">params</span><span class="p">:</span> <span class="n">QueryParamTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-330">    <span class="n">headers</span><span class="p">:</span> <span class="n">HeaderTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-331">    <span class="n">cookies</span><span class="p">:</span> <span class="n">CookieTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-332">    <span class="n">timeout</span><span class="p">:</span> <span class="n">TimeoutTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
-</span><span id="__span-0-333">    <span class="n">extensions</span><span class="p">:</span> <span class="n">RequestExtensions</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-334"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Request</span><span class="p">:</span>
-</span><span id="__span-0-335"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-336"><span class="sd">    Build and return a request instance.</span>
-</span><span id="__span-0-337">
-</span><span id="__span-0-338"><span class="sd">    * The `params`, `headers` and `cookies` arguments</span>
-</span><span id="__span-0-339"><span class="sd">    are merged with any values set on the client.</span>
-</span><span id="__span-0-340"><span class="sd">    * The `url` argument is merged with any `base_url` set on the client.</span>
-</span><span id="__span-0-341">
-</span><span id="__span-0-342"><span class="sd">    See also: [Request instances][0]</span>
-</span><span id="__span-0-343">
-</span><span id="__span-0-344"><span class="sd">    [0]: /advanced/clients/#request-instances</span>
-</span><span id="__span-0-345"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="__span-0-346">    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</span><span id="__span-0-347">    <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_headers</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
-</span><span id="__span-0-348">    <span class="n">cookies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_cookies</span><span class="p">(</span><span class="n">cookies</span><span class="p">)</span>
-</span><span id="__span-0-349">    <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_queryparams</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</span><span id="__span-0-350">    <span class="n">extensions</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">extensions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">extensions</span>
-</span><span id="__span-0-351">    <span class="k">if</span> <span class="s2">&quot;timeout&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
-</span><span id="__span-0-352">        <span class="n">timeout</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="__span-0-353">            <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
-</span><span id="__span-0-354">            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="n">UseClientDefault</span><span class="p">)</span>
-</span><span id="__span-0-355">            <span class="k">else</span> <span class="n">Timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
-</span><span id="__span-0-356">        <span class="p">)</span>
-</span><span id="__span-0-357">        <span class="n">extensions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">extensions</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
-</span><span id="__span-0-358">    <span class="k">return</span> <span class="n">Request</span><span class="p">(</span>
-</span><span id="__span-0-359">        <span class="n">method</span><span class="p">,</span>
-</span><span id="__span-0-360">        <span class="n">url</span><span class="p">,</span>
-</span><span id="__span-0-361">        <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
-</span><span id="__span-0-362">        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-</span><span id="__span-0-363">        <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
-</span><span id="__span-0-364">        <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">,</span>
-</span><span id="__span-0-365">        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-</span><span id="__span-0-366">        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-</span><span id="__span-0-367">        <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">,</span>
-</span><span id="__span-0-368">        <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
-</span><span id="__span-0-369">    <span class="p">)</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-340"><span class="k">def</span><span class="w"> </span><span class="nf">build_request</span><span class="p">(</span>
+</span><span id="__span-0-341">    <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-0-342">    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-343">    <span class="n">url</span><span class="p">:</span> <span class="n">URL</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-344">    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-345">    <span class="n">content</span><span class="p">:</span> <span class="n">RequestContent</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-346">    <span class="n">data</span><span class="p">:</span> <span class="n">RequestData</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-347">    <span class="n">files</span><span class="p">:</span> <span class="n">RequestFiles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-348">    <span class="n">json</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-349">    <span class="n">params</span><span class="p">:</span> <span class="n">QueryParamTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-350">    <span class="n">headers</span><span class="p">:</span> <span class="n">HeaderTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-351">    <span class="n">cookies</span><span class="p">:</span> <span class="n">CookieTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-352">    <span class="n">timeout</span><span class="p">:</span> <span class="n">TimeoutTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
+</span><span id="__span-0-353">    <span class="n">extensions</span><span class="p">:</span> <span class="n">RequestExtensions</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-354"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Request</span><span class="p">:</span>
+</span><span id="__span-0-355"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-356"><span class="sd">    Build and return a request instance.</span>
+</span><span id="__span-0-357">
+</span><span id="__span-0-358"><span class="sd">    * The `params`, `headers` and `cookies` arguments</span>
+</span><span id="__span-0-359"><span class="sd">    are merged with any values set on the client.</span>
+</span><span id="__span-0-360"><span class="sd">    * The `url` argument is merged with any `base_url` set on the client.</span>
+</span><span id="__span-0-361">
+</span><span id="__span-0-362"><span class="sd">    See also: [Request instances][0]</span>
+</span><span id="__span-0-363">
+</span><span id="__span-0-364"><span class="sd">    [0]: /advanced/clients/#request-instances</span>
+</span><span id="__span-0-365"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-366">    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</span><span id="__span-0-367">    <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_headers</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+</span><span id="__span-0-368">    <span class="n">cookies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_cookies</span><span class="p">(</span><span class="n">cookies</span><span class="p">)</span>
+</span><span id="__span-0-369">    <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_queryparams</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</span><span id="__span-0-370">    <span class="n">extensions</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="n">extensions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">extensions</span>
+</span><span id="__span-0-371">    <span class="k">if</span> <span class="s2">&quot;timeout&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
+</span><span id="__span-0-372">        <span class="n">timeout</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-0-373">            <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
+</span><span id="__span-0-374">            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="n">UseClientDefault</span><span class="p">)</span>
+</span><span id="__span-0-375">            <span class="k">else</span> <span class="n">Timeout</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+</span><span id="__span-0-376">        <span class="p">)</span>
+</span><span id="__span-0-377">        <span class="n">extensions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="o">**</span><span class="n">extensions</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
+</span><span id="__span-0-378">    <span class="k">return</span> <span class="n">Request</span><span class="p">(</span>
+</span><span id="__span-0-379">        <span class="n">method</span><span class="p">,</span>
+</span><span id="__span-0-380">        <span class="n">url</span><span class="p">,</span>
+</span><span id="__span-0-381">        <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
+</span><span id="__span-0-382">        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+</span><span id="__span-0-383">        <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
+</span><span id="__span-0-384">        <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">,</span>
+</span><span id="__span-0-385">        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+</span><span id="__span-0-386">        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+</span><span id="__span-0-387">        <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">,</span>
+</span><span id="__span-0-388">        <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
+</span><span id="__span-0-389">    <span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -6070,7 +6070,19 @@ instead of loading it into memory at once.</p>
 
             <details class="quote">
               <summary>Source code in <code>httpx/_client.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">839</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">827</span>
+<span class="normal">828</span>
+<span class="normal">829</span>
+<span class="normal">830</span>
+<span class="normal">831</span>
+<span class="normal">832</span>
+<span class="normal">833</span>
+<span class="normal">834</span>
+<span class="normal">835</span>
+<span class="normal">836</span>
+<span class="normal">837</span>
+<span class="normal">838</span>
+<span class="normal">839</span>
 <span class="normal">840</span>
 <span class="normal">841</span>
 <span class="normal">842</span>
@@ -6108,69 +6120,57 @@ instead of loading it into memory at once.</p>
 <span class="normal">874</span>
 <span class="normal">875</span>
 <span class="normal">876</span>
-<span class="normal">877</span>
-<span class="normal">878</span>
-<span class="normal">879</span>
-<span class="normal">880</span>
-<span class="normal">881</span>
-<span class="normal">882</span>
-<span class="normal">883</span>
-<span class="normal">884</span>
-<span class="normal">885</span>
-<span class="normal">886</span>
-<span class="normal">887</span>
-<span class="normal">888</span>
-<span class="normal">889</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-839"><span class="nd">@contextmanager</span>
-</span><span id="__span-0-840"><span class="k">def</span><span class="w"> </span><span class="nf">stream</span><span class="p">(</span>
-</span><span id="__span-0-841">    <span class="bp">self</span><span class="p">,</span>
-</span><span id="__span-0-842">    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-843">    <span class="n">url</span><span class="p">:</span> <span class="n">URL</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-844">    <span class="o">*</span><span class="p">,</span>
-</span><span id="__span-0-845">    <span class="n">content</span><span class="p">:</span> <span class="n">RequestContent</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-846">    <span class="n">data</span><span class="p">:</span> <span class="n">RequestData</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-847">    <span class="n">files</span><span class="p">:</span> <span class="n">RequestFiles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-848">    <span class="n">json</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-849">    <span class="n">params</span><span class="p">:</span> <span class="n">QueryParamTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-850">    <span class="n">headers</span><span class="p">:</span> <span class="n">HeaderTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-851">    <span class="n">cookies</span><span class="p">:</span> <span class="n">CookieTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-852">    <span class="n">auth</span><span class="p">:</span> <span class="n">AuthTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
-</span><span id="__span-0-853">    <span class="n">follow_redirects</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
-</span><span id="__span-0-854">    <span class="n">timeout</span><span class="p">:</span> <span class="n">TimeoutTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
-</span><span id="__span-0-855">    <span class="n">extensions</span><span class="p">:</span> <span class="n">RequestExtensions</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-856"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Response</span><span class="p">]:</span>
-</span><span id="__span-0-857"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-858"><span class="sd">    Alternative to `httpx.request()` that streams the response body</span>
-</span><span id="__span-0-859"><span class="sd">    instead of loading it into memory at once.</span>
-</span><span id="__span-0-860">
-</span><span id="__span-0-861"><span class="sd">    **Parameters**: See `httpx.request`.</span>
-</span><span id="__span-0-862">
-</span><span id="__span-0-863"><span class="sd">    See also: [Streaming Responses][0]</span>
-</span><span id="__span-0-864">
-</span><span id="__span-0-865"><span class="sd">    [0]: /quickstart#streaming-responses</span>
-</span><span id="__span-0-866"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="__span-0-867">    <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_request</span><span class="p">(</span>
-</span><span id="__span-0-868">        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
-</span><span id="__span-0-869">        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-</span><span id="__span-0-870">        <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
-</span><span id="__span-0-871">        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
-</span><span id="__span-0-872">        <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
-</span><span id="__span-0-873">        <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">,</span>
-</span><span id="__span-0-874">        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-</span><span id="__span-0-875">        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-</span><span id="__span-0-876">        <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">,</span>
-</span><span id="__span-0-877">        <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-</span><span id="__span-0-878">        <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
-</span><span id="__span-0-879">    <span class="p">)</span>
-</span><span id="__span-0-880">    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
-</span><span id="__span-0-881">        <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span>
-</span><span id="__span-0-882">        <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
-</span><span id="__span-0-883">        <span class="n">follow_redirects</span><span class="o">=</span><span class="n">follow_redirects</span><span class="p">,</span>
-</span><span id="__span-0-884">        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-885">    <span class="p">)</span>
-</span><span id="__span-0-886">    <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-0-887">        <span class="k">yield</span> <span class="n">response</span>
-</span><span id="__span-0-888">    <span class="k">finally</span><span class="p">:</span>
-</span><span id="__span-0-889">        <span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="normal">877</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-827"><span class="nd">@contextmanager</span>
+</span><span id="__span-0-828"><span class="k">def</span><span class="w"> </span><span class="nf">stream</span><span class="p">(</span>
+</span><span id="__span-0-829">    <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-0-830">    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-831">    <span class="n">url</span><span class="p">:</span> <span class="n">URL</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-832">    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-833">    <span class="n">content</span><span class="p">:</span> <span class="n">RequestContent</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-834">    <span class="n">data</span><span class="p">:</span> <span class="n">RequestData</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-835">    <span class="n">files</span><span class="p">:</span> <span class="n">RequestFiles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-836">    <span class="n">json</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-837">    <span class="n">params</span><span class="p">:</span> <span class="n">QueryParamTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-838">    <span class="n">headers</span><span class="p">:</span> <span class="n">HeaderTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-839">    <span class="n">cookies</span><span class="p">:</span> <span class="n">CookieTypes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-840">    <span class="n">auth</span><span class="p">:</span> <span class="n">AuthTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
+</span><span id="__span-0-841">    <span class="n">follow_redirects</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
+</span><span id="__span-0-842">    <span class="n">timeout</span><span class="p">:</span> <span class="n">TimeoutTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
+</span><span id="__span-0-843">    <span class="n">extensions</span><span class="p">:</span> <span class="n">RequestExtensions</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-844"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="n">Response</span><span class="p">]:</span>
+</span><span id="__span-0-845"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-846"><span class="sd">    Alternative to `httpx.request()` that streams the response body</span>
+</span><span id="__span-0-847"><span class="sd">    instead of loading it into memory at once.</span>
+</span><span id="__span-0-848">
+</span><span id="__span-0-849"><span class="sd">    **Parameters**: See `httpx.request`.</span>
+</span><span id="__span-0-850">
+</span><span id="__span-0-851"><span class="sd">    See also: [Streaming Responses][0]</span>
+</span><span id="__span-0-852">
+</span><span id="__span-0-853"><span class="sd">    [0]: /quickstart#streaming-responses</span>
+</span><span id="__span-0-854"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-855">    <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_request</span><span class="p">(</span>
+</span><span id="__span-0-856">        <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+</span><span id="__span-0-857">        <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+</span><span id="__span-0-858">        <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
+</span><span id="__span-0-859">        <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+</span><span id="__span-0-860">        <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
+</span><span id="__span-0-861">        <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">,</span>
+</span><span id="__span-0-862">        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+</span><span id="__span-0-863">        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+</span><span id="__span-0-864">        <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">,</span>
+</span><span id="__span-0-865">        <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+</span><span id="__span-0-866">        <span class="n">extensions</span><span class="o">=</span><span class="n">extensions</span><span class="p">,</span>
+</span><span id="__span-0-867">    <span class="p">)</span>
+</span><span id="__span-0-868">    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+</span><span id="__span-0-869">        <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span>
+</span><span id="__span-0-870">        <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
+</span><span id="__span-0-871">        <span class="n">follow_redirects</span><span class="o">=</span><span class="n">follow_redirects</span><span class="p">,</span>
+</span><span id="__span-0-872">        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-873">    <span class="p">)</span>
+</span><span id="__span-0-874">    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-875">        <span class="k">yield</span> <span class="n">response</span>
+</span><span id="__span-0-876">    <span class="k">finally</span><span class="p">:</span>
+</span><span id="__span-0-877">        <span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -6205,7 +6205,19 @@ but passing an explicit <code>httpx.Request()</code> is supported as well.</p>
 
             <details class="quote">
               <summary>Source code in <code>httpx/_client.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">891</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">879</span>
+<span class="normal">880</span>
+<span class="normal">881</span>
+<span class="normal">882</span>
+<span class="normal">883</span>
+<span class="normal">884</span>
+<span class="normal">885</span>
+<span class="normal">886</span>
+<span class="normal">887</span>
+<span class="normal">888</span>
+<span class="normal">889</span>
+<span class="normal">890</span>
+<span class="normal">891</span>
 <span class="normal">892</span>
 <span class="normal">893</span>
 <span class="normal">894</span>
@@ -6242,68 +6254,56 @@ but passing an explicit <code>httpx.Request()</code> is supported as well.</p>
 <span class="normal">925</span>
 <span class="normal">926</span>
 <span class="normal">927</span>
-<span class="normal">928</span>
-<span class="normal">929</span>
-<span class="normal">930</span>
-<span class="normal">931</span>
-<span class="normal">932</span>
-<span class="normal">933</span>
-<span class="normal">934</span>
-<span class="normal">935</span>
-<span class="normal">936</span>
-<span class="normal">937</span>
-<span class="normal">938</span>
-<span class="normal">939</span>
-<span class="normal">940</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-891"><span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span>
-</span><span id="__span-0-892">    <span class="bp">self</span><span class="p">,</span>
-</span><span id="__span-0-893">    <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span>
-</span><span id="__span-0-894">    <span class="o">*</span><span class="p">,</span>
-</span><span id="__span-0-895">    <span class="n">stream</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="__span-0-896">    <span class="n">auth</span><span class="p">:</span> <span class="n">AuthTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
-</span><span id="__span-0-897">    <span class="n">follow_redirects</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
-</span><span id="__span-0-898"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
-</span><span id="__span-0-899"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-900"><span class="sd">    Send a request.</span>
-</span><span id="__span-0-901">
-</span><span id="__span-0-902"><span class="sd">    The request is sent as-is, unmodified.</span>
-</span><span id="__span-0-903">
-</span><span id="__span-0-904"><span class="sd">    Typically you&#39;ll want to build one with `Client.build_request()`</span>
-</span><span id="__span-0-905"><span class="sd">    so that any client-level configuration is merged into the request,</span>
-</span><span id="__span-0-906"><span class="sd">    but passing an explicit `httpx.Request()` is supported as well.</span>
-</span><span id="__span-0-907">
-</span><span id="__span-0-908"><span class="sd">    See also: [Request instances][0]</span>
+<span class="normal">928</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-879"><span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span>
+</span><span id="__span-0-880">    <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-0-881">    <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span>
+</span><span id="__span-0-882">    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-883">    <span class="n">stream</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-0-884">    <span class="n">auth</span><span class="p">:</span> <span class="n">AuthTypes</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
+</span><span id="__span-0-885">    <span class="n">follow_redirects</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">UseClientDefault</span> <span class="o">=</span> <span class="n">USE_CLIENT_DEFAULT</span><span class="p">,</span>
+</span><span id="__span-0-886"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+</span><span id="__span-0-887"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-888"><span class="sd">    Send a request.</span>
+</span><span id="__span-0-889">
+</span><span id="__span-0-890"><span class="sd">    The request is sent as-is, unmodified.</span>
+</span><span id="__span-0-891">
+</span><span id="__span-0-892"><span class="sd">    Typically you&#39;ll want to build one with `Client.build_request()`</span>
+</span><span id="__span-0-893"><span class="sd">    so that any client-level configuration is merged into the request,</span>
+</span><span id="__span-0-894"><span class="sd">    but passing an explicit `httpx.Request()` is supported as well.</span>
+</span><span id="__span-0-895">
+</span><span id="__span-0-896"><span class="sd">    See also: [Request instances][0]</span>
+</span><span id="__span-0-897">
+</span><span id="__span-0-898"><span class="sd">    [0]: /advanced/clients/#request-instances</span>
+</span><span id="__span-0-899"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-900">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">:</span>
+</span><span id="__span-0-901">        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Cannot send a request, as the client has been closed.&quot;</span><span class="p">)</span>
+</span><span id="__span-0-902">
+</span><span id="__span-0-903">    <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">OPENED</span>
+</span><span id="__span-0-904">    <span class="n">follow_redirects</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-0-905">        <span class="bp">self</span><span class="o">.</span><span class="n">follow_redirects</span>
+</span><span id="__span-0-906">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">follow_redirects</span><span class="p">,</span> <span class="n">UseClientDefault</span><span class="p">)</span>
+</span><span id="__span-0-907">        <span class="k">else</span> <span class="n">follow_redirects</span>
+</span><span id="__span-0-908">    <span class="p">)</span>
 </span><span id="__span-0-909">
-</span><span id="__span-0-910"><span class="sd">    [0]: /advanced/clients/#request-instances</span>
-</span><span id="__span-0-911"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="__span-0-912">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">:</span>
-</span><span id="__span-0-913">        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Cannot send a request, as the client has been closed.&quot;</span><span class="p">)</span>
-</span><span id="__span-0-914">
-</span><span id="__span-0-915">    <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">OPENED</span>
-</span><span id="__span-0-916">    <span class="n">follow_redirects</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="__span-0-917">        <span class="bp">self</span><span class="o">.</span><span class="n">follow_redirects</span>
-</span><span id="__span-0-918">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">follow_redirects</span><span class="p">,</span> <span class="n">UseClientDefault</span><span class="p">)</span>
-</span><span id="__span-0-919">        <span class="k">else</span> <span class="n">follow_redirects</span>
-</span><span id="__span-0-920">    <span class="p">)</span>
-</span><span id="__span-0-921">
-</span><span id="__span-0-922">    <span class="bp">self</span><span class="o">.</span><span class="n">_set_timeout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span><span id="__span-0-910">    <span class="bp">self</span><span class="o">.</span><span class="n">_set_timeout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span><span id="__span-0-911">
+</span><span id="__span-0-912">    <span class="n">auth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_request_auth</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</span><span id="__span-0-913">
+</span><span id="__span-0-914">    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_handling_auth</span><span class="p">(</span>
+</span><span id="__span-0-915">        <span class="n">request</span><span class="p">,</span>
+</span><span id="__span-0-916">        <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
+</span><span id="__span-0-917">        <span class="n">follow_redirects</span><span class="o">=</span><span class="n">follow_redirects</span><span class="p">,</span>
+</span><span id="__span-0-918">        <span class="n">history</span><span class="o">=</span><span class="p">[],</span>
+</span><span id="__span-0-919">    <span class="p">)</span>
+</span><span id="__span-0-920">    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-921">        <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="p">:</span>
+</span><span id="__span-0-922">            <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </span><span id="__span-0-923">
-</span><span id="__span-0-924">    <span class="n">auth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_request_auth</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">auth</span><span class="p">)</span>
+</span><span id="__span-0-924">        <span class="k">return</span> <span class="n">response</span>
 </span><span id="__span-0-925">
-</span><span id="__span-0-926">    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_handling_auth</span><span class="p">(</span>
-</span><span id="__span-0-927">        <span class="n">request</span><span class="p">,</span>
-</span><span id="__span-0-928">        <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
-</span><span id="__span-0-929">        <span class="n">follow_redirects</span><span class="o">=</span><span class="n">follow_redirects</span><span class="p">,</span>
-</span><span id="__span-0-930">        <span class="n">history</span><span class="o">=</span><span class="p">[],</span>
-</span><span id="__span-0-931">    <span class="p">)</span>
-</span><span id="__span-0-932">    <span class="k">try</span><span class="p">:</span>
-</span><span id="__span-0-933">        <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="p">:</span>
-</span><span id="__span-0-934">            <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</span><span id="__span-0-935">
-</span><span id="__span-0-936">        <span class="k">return</span> <span class="n">response</span>
-</span><span id="__span-0-937">
-</span><span id="__span-0-938">    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-</span><span id="__span-0-939">        <span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="__span-0-940">        <span class="k">raise</span> <span class="n">exc</span>
+</span><span id="__span-0-926">    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+</span><span id="__span-0-927">        <span class="n">response</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-0-928">        <span class="k">raise</span> <span class="n">exc</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -6327,27 +6327,27 @@ but passing an explicit <code>httpx.Request()</code> is supported as well.</p>
 
             <details class="quote">
               <summary>Source code in <code>httpx/_client.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1276</span>
-<span class="normal">1277</span>
-<span class="normal">1278</span>
-<span class="normal">1279</span>
-<span class="normal">1280</span>
-<span class="normal">1281</span>
-<span class="normal">1282</span>
-<span class="normal">1283</span>
-<span class="normal">1284</span>
-<span class="normal">1285</span>
-<span class="normal">1286</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1276"><span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-1277"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-1278"><span class="sd">    Close transport and proxies.</span>
-</span><span id="__span-0-1279"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="__span-0-1280">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">!=</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">:</span>
-</span><span id="__span-0-1281">        <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">CLOSED</span>
-</span><span id="__span-0-1282">
-</span><span id="__span-0-1283">        <span class="bp">self</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span id="__span-0-1284">        <span class="k">for</span> <span class="n">transport</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mounts</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-</span><span id="__span-0-1285">            <span class="k">if</span> <span class="n">transport</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-1286">                <span class="n">transport</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1263</span>
+<span class="normal">1264</span>
+<span class="normal">1265</span>
+<span class="normal">1266</span>
+<span class="normal">1267</span>
+<span class="normal">1268</span>
+<span class="normal">1269</span>
+<span class="normal">1270</span>
+<span class="normal">1271</span>
+<span class="normal">1272</span>
+<span class="normal">1273</span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1263"><span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-1264"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-1265"><span class="sd">    Close transport and proxies.</span>
+</span><span id="__span-0-1266"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-1267">    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">!=</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">CLOSED</span><span class="p">:</span>
+</span><span id="__span-0-1268">        <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="n">ClientState</span><span class="o">.</span><span class="n">CLOSED</span>
+</span><span id="__span-0-1269">
+</span><span id="__span-0-1270">        <span class="bp">self</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-0-1271">        <span class="k">for</span> <span class="n">transport</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mounts</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+</span><span id="__span-0-1272">            <span class="k">if</span> <span class="n">transport</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-1273">                <span class="n">transport</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>

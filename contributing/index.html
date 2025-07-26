@@ -4621,6 +4621,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#request-a-new-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request a New Language
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#new-language" class="md-nav__link">
     <span class="md-ellipsis">
       New Language
@@ -5141,6 +5150,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#request-a-new-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request a New Language
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#new-language" class="md-nav__link">
     <span class="md-ellipsis">
       New Language
@@ -5426,32 +5444,44 @@ To improve this, we’re working on automation tools 🤖 to manage translations
 <li><code>contributing.md</code></li>
 </ul>
 <p>Some of these files are updated very frequently and a translation would always be behind, or they include the main content from English source files, etc.</p>
+<h4 id="request-a-new-language">Request a New Language<a class="headerlink" href="#request-a-new-language" title="Permanent link">&para;</a></h4>
+<p>Let's say that you want to request translations for a language that is not yet translated, not even some pages. For example, Latin.</p>
+<p>If there is no discussion for that language, you can start by requesting the new language. For that, you can follow these steps:</p>
+<ul>
+<li>Create a new discussion following the template.</li>
+<li>Get a few native speakers to comment on the discussion and commit to help review translations for that language.</li>
+</ul>
+<p>Once there are several people in the discussion, the FastAPI team can evaluate it and can make it an official translation.</p>
+<p>Then the docs will be automatically translated using AI, and the team of native speakers can review the translation, and help tweak the AI prompts.</p>
+<p>Once there's a new translation, for example if docs are updated or there's a new section, there will be a comment in the same discussion with the link to the new translation to review.</p>
 <h4 id="new-language">New Language<a class="headerlink" href="#new-language" title="Permanent link">&para;</a></h4>
-<p>Let's say that you want to add translations for a language that is not yet translated, not even some pages.</p>
-<p>Let's say you want to add translations for Creole, and it's not yet there in the docs.</p>
-<p>Checking the link from above, the code for "Creole" is <code>ht</code>.</p>
-<p>The next step is to run the script to generate a new translation directory:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These steps will be performed by the FastAPI team.</p>
+</div>
+<p>Checking the link from above (List of ISO 639-1 codes), you can see that the 2-letter code for Latin is <code>la</code>.</p>
+<p>Now you can create a new directory for the new language, running the following script:</p>
 <div class="termy">
 
 <div class="highlight"><pre><span></span><code><span id="__span-13-1"><span class="go">// Use the command new-lang, pass the language code as a CLI argument</span>
-</span><span id="__span-13-2"><span class="gp">$ </span>python<span class="w"> </span>./scripts/docs.py<span class="w"> </span>new-lang<span class="w"> </span>ht
+</span><span id="__span-13-2"><span class="gp">$ </span>python<span class="w"> </span>./scripts/docs.py<span class="w"> </span>new-lang<span class="w"> </span>la
 </span><span id="__span-13-3">
-</span><span id="__span-13-4"><span class="go">Successfully initialized: docs/ht</span>
+</span><span id="__span-13-4"><span class="go">Successfully initialized: docs/la</span>
 </span></code></pre></div>
 
 </div>
 
-<p>Now you can check in your code editor the newly created directory <code>docs/ht/</code>.</p>
-<p>That command created a file <code>docs/ht/mkdocs.yml</code> with a simple config that inherits everything from the <code>en</code> version:</p>
+<p>Now you can check in your code editor the newly created directory <code>docs/la/</code>.</p>
+<p>That command created a file <code>docs/la/mkdocs.yml</code> with a simple config that inherits everything from the <code>en</code> version:</p>
 <div class="highlight"><pre><span></span><code><span id="__span-14-1"><span class="nt">INHERIT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../en/mkdocs.yml</span>
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You could also simply create that file with those contents manually.</p>
 </div>
-<p>That command also created a dummy file <code>docs/ht/index.md</code> for the main page, you can start by translating that one.</p>
+<p>That command also created a dummy file <code>docs/la/index.md</code> for the main page, you can start by translating that one.</p>
 <p>You can continue with the previous instructions for an "Existing Language" for that process.</p>
-<p>You can make the first pull request with those two files, <code>docs/ht/mkdocs.yml</code> and <code>docs/ht/index.md</code>. 🎉</p>
+<p>You can make the first pull request with those two files, <code>docs/la/mkdocs.yml</code> and <code>docs/la/index.md</code>. 🎉</p>
 <h4 id="preview-the-result">Preview the result<a class="headerlink" href="#preview-the-result" title="Permanent link">&para;</a></h4>
 <p>As already mentioned above, you can use the <code>./scripts/docs.py</code> with the <code>live</code> command to preview the results (or <code>mkdocs serve</code>).</p>
 <p>Once you are done, you can also test it all as it would look online, including all the other languages.</p>
